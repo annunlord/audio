@@ -187,3 +187,22 @@ We also need a feed for the wireless broadcast for the hard-of-hearing. We will 
 | DCA6 | DCA 6 || White |
 | DCA7 | DCA 7 || White |
 | DCA8 | DCA 8 || White |
+
+| User Output | Source | Tap |
+| ----------: | -----: | --: |
+| 1 | Mtx 1 | Post Fadar |
+| 2 | Mtx 2 | Post Fadar |
+| 3 | Mtx 3 | Post Fadar |
+| 4 | Mtx 4 | Post Fadar |
+| 5 | Mtx 5 | Post Fadar |
+| 6 | Mtx 6 | Post Fadar |
+| 7 | Main L | Post Fadar |
+| 8 | Main R | Post Fadar |
+| 9 | Main M/C | Post Fadar |
+| 10 |||
+| 11 |||
+| 12 |||
+| 13 |||
+| 14 |||
+| 15 |||
+| 16 |||
