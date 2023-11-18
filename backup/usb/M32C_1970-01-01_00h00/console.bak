@@ -1,4 +1,4 @@
-#4.0# console.bak     2023-11-18_11h19 M32C 4.09 M32C-09-6D-3D                                                                 
+#4.0# console.bak     2023-11-18_14h47 M32C 4.09 M32C-09-6D-3D                                                                 
 -prefs "ablesque" 80 50 100 50 ON 48K INT ON ON ON ON OFF OFF OFF %0000 OFF SCENES 24h OFF OFF NORM "M32C-09-6D-3D" USB 0 ""
 -prefs/ip OFF
 -prefs/ip/addr 169 254 109 61
@@ -121,15 +121,15 @@
 /config/talk/A -12.0 OFF OFF %000000000000000000
 /config/talk/B -12.0 OFF ON %000000000000000000
 /config/osc -40.0 100.2 1k00 F1 PINK 0
-/config/userrout/out 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-/config/userrout/in 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/config/userrout/out 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/config/userrout/in 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64
 /config/routing REC
-/config/routing/IN A1-8 A9-16 A17-24 A25-32 CARD1-4
-/config/routing/AES50A OUT1-8 OUT9-16 OUT1-8 OUT9-16 P161-8 P169-16
-/config/routing/AES50B OUT1-8 OUT9-16 OUT1-8 OUT9-16 P161-8 P169-16
+/config/routing/IN UIN1-8 UIN9-16 UIN17-24 UIN25-32 A1-6
+/config/routing/AES50A UOUT1-8 UOUT9-16 OUT1-8 OUT9-16 P161-8 P169-16
+/config/routing/AES50B UOUT17-24 OUT9-16 OUT1-8 OUT9-16 P161-8 P169-16
 /config/routing/CARD A1-8 A9-16 A17-24 A25-32
 /config/routing/OUT OUT1-4 OUT5-8 OUT9-12 OUT13-16
-/config/routing/PLAY CARD1-8 CARD9-16 CARD17-24 CARD25-32 CARD1-4
+/config/routing/PLAY UIN1-8 UIN9-16 UIN17-24 UIN25-32 A1-6
 /config/userctrl/A CY
 /config/userctrl/A/enc "D@" "F70" "-" "-"
 /config/userctrl/A/btn "S000" "S001" "S002" "S003" "-" "-" "-" "-"

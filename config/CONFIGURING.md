@@ -2,7 +2,76 @@
 
 This document *every* step taken to configure the M32C for use in the Church.
 
-# Input Routing
+# Routing
+
+We are using two AES50 stage boxes to collect inputs from behind the sacristy as well as in the equipment room.
+
+The final routing will give us
+
+- DL16 (AES50B): Behind the Sacristy
+    - Inputs 1-16 map to `User Input` 1-16
+    - Ouputs 1-8 map to `User Output` 17-24
+- DL32 (AES50A): In the Equipment Room
+    - Inputs 1-6 map to `Aux Input` 1-6
+    - Inputs 17-32 map to `User Input` 17-32
+    - Outputs 1-16 map to `User Output` 1-16
+
+## Input Blocks
+
+- Under `Routing->Input Blocks` map all `InGrp` to the appropriate `User In` block.
+- Under `Routing->Input Blocks` map `Aux Ins` to  `AES50A 1-6`.
+
+This will allow us to have channel-by-channel control under the User Routing section rather than only being able to assign channels in 8 channel blocks.
+
+![Input Block Routing](images/input-block-routing.png)
+
+**The *Play* section should look the same as the *Record* section**
+
+## Output Blocks
+
+The following assigns `User Out 1-25` to the appropriate outputs on our Stage Boxes
+
+- Under `Routing->Output Routing` Map:
+    - `AES50A`- `Out 1-8` to `User Out 1-8`
+    - `AES50A`- `Out 9-16` to `User Out 9-16`
+    - `AES50B`- `Out 1-8` to `User Out 17-25`
+
+### AES50A Output Blocks
+
+![AES50A Output Routing](images/aes50-a-output-block-routing.png)
+
+### AES50B Output Blocks
+![AES50B Output Routing](images/aes50-b-output-block-routing.png)
+
+## User Routing
+
+The previous two sections result in mapping the channel inputs to use the `User Inputs` and the AES50 snakes being fed by the `User Outputs`. 
+Now, in the user routing, we control exactly which channels are mapped to each `User Input` and `User Output`
+
+### User Input Routing
+
+Make the appropriate mapping of AES50 connections to the user ins.
+
+- `AES50B 1-16` to `In 1-16`
+- `AES50A 17-32` to `In 17-32`
+
+These mappings route the AES signals to the User inputs. This allows us to quickly do alternative routings for special events. (Individual channel mappings)
+
+#### AES50B Inputs
+
+![AES50B Feed User In 1-16](images/aes50-b-input-routing.png)
+
+#### AES50A Inputs
+
+![AES50A Feed User In 17-32](images/aes50-a-input-routing.png)
+
+### User Output Routing
+
+We want all of the User outputs to be fed by the `output` from this console. In other words, we want a diagnal line as shown.
+
+`User Output 1-32` from `Local 1-32`
+
+![Output to User Output](images/user-output-routing.png)
 
 ## Appendix A: Channel Assignment
 
