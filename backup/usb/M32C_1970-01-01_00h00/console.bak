@@ -1,4 +1,4 @@
-#4.0# console.bak     2023-11-18_17h21 M32C 4.09 M32C-09-6D-3D                                                                 
+#4.0# console.bak     2023-11-18_17h32 M32C 4.09 M32C-09-6D-3D                                                                 
 -prefs "ablesque" 80 50 100 50 ON 48K INT ON ON ON ON OFF OFF OFF %0000 OFF SCENES 24h OFF OFF NORM "M32C-09-6D-3D" USB 0 ""
 -prefs/ip OFF
 -prefs/ip/addr 169 254 109 61
@@ -1716,7 +1716,7 @@
 /bus/09/config "MR B" 71 CY
 /bus/09/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/09/dyn/filter OFF 3.0 990.9
-/bus/09/insert OFF PRE OFF
+/bus/09/insert ON PRE OFF
 /bus/09/eq OFF
 /bus/09/eq/1 LShv 79.6 +0.00 2.0
 /bus/09/eq/2 PEQ 158.9 +0.00 2.0
@@ -1869,7 +1869,7 @@
 /mtx/01/preamp OFF
 /mtx/01/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 100 OFF
 /mtx/01/dyn/filter OFF 3.0 990.9
-/mtx/01/insert OFF PRE OFF
+/mtx/01/insert ON PRE FX6L
 /mtx/01/eq OFF
 /mtx/01/eq/1 LShv 79.6 +0.00 2.0
 /mtx/01/eq/2 PEQ 158.9 +0.00 2.0
@@ -1883,7 +1883,7 @@
 /mtx/02/preamp OFF
 /mtx/02/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 100 OFF
 /mtx/02/dyn/filter OFF 3.0 990.9
-/mtx/02/insert OFF PRE OFF
+/mtx/02/insert ON PRE FX6R
 /mtx/02/eq OFF
 /mtx/02/eq/1 LShv 79.6 +0.00 2.0
 /mtx/02/eq/2 PEQ 158.9 +0.00 2.0
@@ -1897,7 +1897,7 @@
 /mtx/03/preamp OFF
 /mtx/03/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 100 OFF
 /mtx/03/dyn/filter OFF 3.0 990.9
-/mtx/03/insert OFF PRE OFF
+/mtx/03/insert ON PRE FX7L
 /mtx/03/eq OFF
 /mtx/03/eq/1 LShv 79.6 +0.00 2.0
 /mtx/03/eq/2 PEQ 158.9 +0.00 2.0
@@ -1911,7 +1911,7 @@
 /mtx/04/preamp OFF
 /mtx/04/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 100 OFF
 /mtx/04/dyn/filter OFF 3.0 990.9
-/mtx/04/insert OFF PRE OFF
+/mtx/04/insert ON PRE FX7R
 /mtx/04/eq OFF
 /mtx/04/eq/1 LShv 79.6 +0.00 2.0
 /mtx/04/eq/2 PEQ 158.9 +0.00 2.0
@@ -1952,7 +1952,7 @@
 /main/st/config "Church" 66 WHi
 /main/st/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 100 OFF
 /main/st/dyn/filter OFF 3.0 990.9
-/main/st/insert OFF PRE OFF
+/main/st/insert ON POST FX8L
 /main/st/eq OFF
 /main/st/eq/1 LShv 79.6 +0.00 2.0
 /main/st/eq/2 PEQ 158.9 +0.00 2.0
