@@ -67,11 +67,20 @@ These mappings route the AES signals to the User inputs. This allows us to quick
 
 ### User Output Routing
 
-We want all of the User outputs to be fed by the `output` from this console. In other words, we want a diagnal line as shown.
+We are using this area to patch the console "outputs" to the physical outputs.
+For the time being, I have the following setup:
 
-`User Output 1-32` from `Local 1-32`
+- `User Output 1-10` from `Out 1-10`
+- `User Output 11-16` from `Aux 1-6`
+- `User Output 17-24` from `Out 9-16`
 
-![Output to User Output](images/user-output-routing.png)
+This may need to change as we want to send different outputs to different stage boxes.
+
+![Output to User Output-1](images/user-output-routing-1.PNG)
+
+![Output to User Output-2](images/user-output-routing-2.PNG)
+
+![Output to User Output-3](images/user-output-routing-3.PNG)
 
 # Channel Utilization
 
