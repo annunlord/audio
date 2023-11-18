@@ -73,6 +73,27 @@ We want all of the User outputs to be fed by the `output` from this console. In 
 
 ![Output to User Output](images/user-output-routing.png)
 
+# Channel Utilization
+
+- Channels 1-16 are fed from behind the Scristy.
+- Channels 17-24 and aux 1-16 are fed from the equipment room.
+
+There are 7 Zones that we need separate mixes for.
+
+| Zone | Location | Output Source |
+| ---: | -------: | ------------: |
+| Z1 | Worship Space | Main LR |
+| Z2 | Gathering Space | Mtx 1 |
+| Z3 | Meeting Room A | Mtx 2 |
+| Z4 | Meeting Room B | Mtx 3 |
+| Z5 | Meeting Room C | Mtx 4 |
+| Z6 | Outside | Mtx 5 |
+| Z7 | Lunchroom | Mtx 6 |
+
+We also need a feed for the wireless broadcast for the hard-of-hearing. We will use **MONO** for this.
+
+![Output Naming](images/output-naming.PNG)
+
 ## Appendix A: Channel Assignment
 
 | Channel | Name | Source | Color |
@@ -128,18 +149,18 @@ We want all of the User outputs to be fed by the `output` from this console. In 
 
 | Channel | Name | Source | Color |
 | ------: | ---: | -----: | ----: |
-| Bus01 | MixBus 1 || Yellow |
-| Bus02 | MixBus 2 || Yellow |
-| Bus03 | MixBus 3 || Yellow |
-| Bus04 | MixBus 4 || Yellow |
-| Bus05 | MixBus 5 || Yellow |
-| Bus06 | MixBus 6 || Yellow |
-| Bus07 | MixBus 7 || Yellow |
-| Bus08 | MixBus 8 || Yellow |
-| Bus09 | MixBus 9 || Yellow |
-| Bus10 | MixBus 10 || Yellow |
-| Bus11 | MixBus 11 || Yellow |
-| Bus12 | MixBus 12 || Yellow |
+| Bus01 | MixBus 1 || Cyan |
+| Bus02 | MixBus 2 || Cyan |
+| Bus03 | MixBus 3 || Cyan |
+| Bus04 | MixBus 4 || Cyan |
+| Bus05 | MixBus 5 || Cyan |
+| Bus06 | MixBus 6 || Cyan |
+| Bus07 | MixBus 7 || Cyan |
+| Bus08 | MixBus 8 || Cyan |
+| Bus09 | MixBus 9 || Cyan |
+| Bus10 | MixBus 10 || Cyan |
+| Bus11 | MixBus 11 || Cyan |
+| Bus12 | MixBus 12 || Cyan |
 | Bus13 | FX 1 || Magenta |
 | Bus14 | FX 2 || Magenta |
 | Bus15 | FX 3 || Magenta |
@@ -147,14 +168,14 @@ We want all of the User outputs to be fed by the `output` from this console. In 
 
 | Channel | Name | Destination | Color |
 | ------: | ---: | ----------: | ----: |
-| LR |||White|
-| Mono |||White|
-| Mtx1 |||Magenta|
-| Mtx2 |||Magenta|
-| Mtx3 |||Magenta|
-| Mtx4 |||Magenta|
-| Mtx5 |||Magenta|
-| Mtx6 |||Magenta|
+| LR | Church out || White Inv |
+| Mono | Headphones || White Inv |
+| Mtx1 | Gathering Space Out || Magenta Inv |
+| Mtx2 | MR A Out || Yellow Inv |
+| Mtx3 | MR B Out || Cyan Inv |
+| Mtx4 | MR C Out || Green Inv |
+| Mtx5 | Outside Out || Red Inv |
+| Mtx6 | Cafeteria Out || Blue Inv |
 
 | Channel | Name | Source | Color |
 | ------: | ---: | -----: | ----: |
