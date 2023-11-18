@@ -174,18 +174,18 @@ If the meeting rooms are part of the worship space, then we will need to send zo
 
 | Channel | Name | Source | Color |
 | ------: | ---: | -----: | ----: |
-| Bus01 | MixBus 1 || Cyan |
-| Bus02 | MixBus 2 || Cyan |
-| Bus03 | MixBus 3 || Cyan |
-| Bus04 | MixBus 4 || Cyan |
-| Bus05 | MixBus 5 || Cyan |
-| Bus06 | MixBus 6 || Cyan |
-| Bus07 | MixBus 7 || Cyan |
-| Bus08 | MixBus 8 || Cyan |
-| Bus09 | MixBus 9 || Cyan |
-| Bus10 | MixBus 10 || Cyan |
-| Bus11 | MixBus 11 || Cyan |
-| Bus12 | MixBus 12 || Cyan |
+| Bus01 | Choir L || White |
+| Bus02 | Choir R || White |
+| Bus03 | Church Mics || White |
+| Bus04 | MixBus 4 || Black |
+| Bus05 | MixBus 5 || Black |
+| Bus06 | MixBus 6 || Black |
+| Bus07 | Gathering Sp || Magenta |
+| Bus08 | MR A || Yellow |
+| Bus09 | MR B || Cyan |
+| Bus10 | MR C || Green |
+| Bus11 | Outdoors || Red |
+| Bus12 | Cafeteria || Blue |
 | Bus13 | FX 1 || Magenta |
 | Bus14 | FX 2 || Magenta |
 | Bus15 | FX 3 || Magenta |

@@ -1,4 +1,4 @@
-#4.0# console.bak     2023-11-18_16h20 M32C 4.09 M32C-09-6D-3D                                                                 
+#4.0# console.bak     2023-11-18_16h43 M32C 4.09 M32C-09-6D-3D                                                                 
 -prefs "ablesque" 80 50 100 50 ON 48K INT ON ON ON ON OFF OFF OFF %0000 OFF SCENES 24h OFF OFF NORM "M32C-09-6D-3D" USB 0 ""
 -prefs/ip OFF
 -prefs/ip/addr 169 254 109 61
@@ -1561,7 +1561,7 @@
 /fxrtn/08/mix/15 ON   -oo +100 POST 0
 /fxrtn/08/mix/16 ON   -oo
 /fxrtn/08/grp %00000000 %000000
-/bus/01/config "MixBus 1" 71 CY
+/bus/01/config "Choir L" 71 WH
 /bus/01/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/01/dyn/filter OFF 3.0 990.9
 /bus/01/insert OFF PRE OFF
@@ -1580,7 +1580,7 @@
 /bus/01/mix/05 ON   -oo +0 POST 0
 /bus/01/mix/06 ON   -oo
 /bus/01/grp %00000000 %000000
-/bus/02/config "MixBus 2" 71 CY
+/bus/02/config "Choir R" 71 WH
 /bus/02/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/02/dyn/filter OFF 3.0 990.9
 /bus/02/insert OFF PRE OFF
@@ -1599,7 +1599,7 @@
 /bus/02/mix/05 ON   -oo +0 POST 0
 /bus/02/mix/06 ON   -oo
 /bus/02/grp %00000000 %000000
-/bus/03/config "MixBus 3" 71 CY
+/bus/03/config "Church Mics" 71 WH
 /bus/03/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/03/dyn/filter OFF 3.0 990.9
 /bus/03/insert OFF PRE OFF
@@ -1618,7 +1618,7 @@
 /bus/03/mix/05 ON   -oo +0 POST 0
 /bus/03/mix/06 ON   -oo
 /bus/03/grp %00000000 %000000
-/bus/04/config "MixBus 4" 71 CY
+/bus/04/config "MixBus 4" 71 OFF
 /bus/04/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/04/dyn/filter OFF 3.0 990.9
 /bus/04/insert OFF PRE OFF
@@ -1637,7 +1637,7 @@
 /bus/04/mix/05 ON   -oo +0 POST 0
 /bus/04/mix/06 ON   -oo
 /bus/04/grp %00000000 %000000
-/bus/05/config "MixBus 5" 71 CY
+/bus/05/config "MixBus 5" 71 OFF
 /bus/05/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/05/dyn/filter OFF 3.0 990.9
 /bus/05/insert OFF PRE OFF
@@ -1656,7 +1656,7 @@
 /bus/05/mix/05 ON   -oo +0 POST 0
 /bus/05/mix/06 ON   -oo
 /bus/05/grp %00000000 %000000
-/bus/06/config "MixBus 6" 71 CY
+/bus/06/config "MixBus 6" 71 OFF
 /bus/06/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/06/dyn/filter OFF 3.0 990.9
 /bus/06/insert OFF PRE OFF
@@ -1675,7 +1675,7 @@
 /bus/06/mix/05 ON   -oo +0 POST 0
 /bus/06/mix/06 ON   -oo
 /bus/06/grp %00000000 %000000
-/bus/07/config "MixBus 7" 71 CY
+/bus/07/config "Gathering Sp" 71 MG
 /bus/07/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/07/dyn/filter OFF 3.0 990.9
 /bus/07/insert OFF PRE OFF
@@ -1694,7 +1694,7 @@
 /bus/07/mix/05 ON   -oo +0 POST 0
 /bus/07/mix/06 ON   -oo
 /bus/07/grp %00000000 %000000
-/bus/08/config "MixBus 8" 71 CY
+/bus/08/config "MR A" 71 YE
 /bus/08/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/08/dyn/filter OFF 3.0 990.9
 /bus/08/insert OFF PRE OFF
@@ -1713,7 +1713,7 @@
 /bus/08/mix/05 ON   -oo +0 POST 0
 /bus/08/mix/06 ON   -oo
 /bus/08/grp %00000000 %000000
-/bus/09/config "MixBus 9" 71 CY
+/bus/09/config "MR B" 71 CY
 /bus/09/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/09/dyn/filter OFF 3.0 990.9
 /bus/09/insert OFF PRE OFF
@@ -1732,7 +1732,7 @@
 /bus/09/mix/05 ON   -oo +0 POST 0
 /bus/09/mix/06 ON   -oo
 /bus/09/grp %00000000 %000000
-/bus/10/config "MixBus 10" 71 CY
+/bus/10/config "MR C" 71 GN
 /bus/10/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/10/dyn/filter OFF 3.0 990.9
 /bus/10/insert OFF PRE OFF
@@ -1751,7 +1751,7 @@
 /bus/10/mix/05 ON   -oo +0 POST 0
 /bus/10/mix/06 ON   -oo
 /bus/10/grp %00000000 %000000
-/bus/11/config "MixBus 11" 71 CY
+/bus/11/config "Outdoors" 71 RD
 /bus/11/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/11/dyn/filter OFF 3.0 990.9
 /bus/11/insert OFF PRE OFF
@@ -1770,7 +1770,7 @@
 /bus/11/mix/05 ON   -oo +0 POST 0
 /bus/11/mix/06 ON   -oo
 /bus/11/grp %00000000 %000000
-/bus/12/config "MixBus 12" 71 CY
+/bus/12/config "Cafeteria" 71 BL
 /bus/12/dyn OFF COMP RMS LOG 0.0 3.0 1 0.00 10 10.0  151 POST 0 100 OFF
 /bus/12/dyn/filter OFF 3.0 990.9
 /bus/12/insert OFF PRE OFF
