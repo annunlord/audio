@@ -103,6 +103,22 @@ We also need a feed for the wireless broadcast for the hard-of-hearing. We will 
 
 ![Output Naming](images/output-naming.PNG)
 
+# Internal Routing
+
+Because we have 8 potentially independent mixes within this console, we have to be creative.
+
+The signal flow chain goes as follows:
+
+Zone inputs come in on independent channels. All channels that are inputs of a specific zone get sent to a subgroup/mixbus. That mixbus can then be directed to any of the matrices/mainlr/mono sends. This is how we will combine the rooms.
+
+For example,
+
+If channel 1 is the podium mic input, I will route it to the mix bus for zone 1.
+
+If the meeting rooms are part of the worship space, then we will need to send zone1's inputs to the meeting rooms. This would mean sending the zone1 mixbus to the matrices of room A, room B, and room C.
+
+# Appendix
+
 ## Appendix A: Channel Assignment
 
 | Channel | Name | Source | Color |
