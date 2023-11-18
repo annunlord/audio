@@ -117,44 +117,50 @@ If channel 1 is the podium mic input, I will route it to the mix bus for zone 1.
 
 If the meeting rooms are part of the worship space, then we will need to send zone1's inputs to the meeting rooms. This would mean sending the zone1 mixbus to the matrices of room A, room B, and room C.
 
+## Internal Setup
+
+- Disable all channels send to LR
+- Setup each mix bus as a subgroup tap
+- Select each channel as part of the subgroup
+
 # Appendix
 
 ## Appendix A: Channel Assignment
 
 | Channel | Name | Source | Color |
 | ------: | ---: | -----: | ----: |
-| CH01 || local 01 | Yellow |
-| CH02 || local 02 | Yellow |
-| CH03 || local 03 | Yellow |
-| CH04 || local 04 | Yellow |
-| CH05 || local 05 | Yellow |
-| CH06 || local 06 | Yellow |
-| CH07 || local 07 | Yellow |
-| CH08 || local 08 | Yellow |
-| CH09 || local 09 | Yellow |
-| CH10 || local 10 | Yellow |
-| CH11 || local 11 | Yellow |
-| CH12 || local 12 | Yellow |
-| CH13 || local 13 | Yellow |
-| CH14 || local 14 | Yellow |
-| CH15 || local 15 | Yellow |
-| CH16 || local 16 | Yellow |
-| CH17 || local 17 | Yellow |
-| CH18 || local 18 | Yellow |
-| CH19 || local 19 | Yellow |
-| CH20 || local 20 | Yellow |
-| CH21 || local 21 | Yellow |
-| CH22 || local 22 | Yellow |
-| CH23 || local 23 | Yellow |
-| CH24 || local 24 | Yellow |
-| CH25 || local 25 | Yellow |
-| CH26 || local 26 | Yellow |
-| CH27 || local 27 | Yellow |
-| CH28 || local 28 | Yellow |
-| CH29 || local 29 | Yellow |
-| CH30 || local 30 | Yellow |
-| CH31 || local 31 | Yellow |
-| CH32 || local 32 | Yellow |
+| CH01 | Choir L | DL16 - AES50B - 01 | White |
+| CH02 | Choir R | DL16 - AES50B - 02 | White |
+| CH03 || DL16 - AES50B - 03 | Yellow |
+| CH04 || DL16 - AES50B - 04 | Yellow |
+| CH05 || DL16 - AES50B - 05 | Yellow |
+| CH06 || DL16 - AES50B - 06 | Yellow |
+| CH07 || DL16 - AES50B - 07 | Yellow |
+| CH08 || DL16 - AES50B - 08 | Yellow |
+| CH09 || DL16 - AES50B - 09 | Yellow |
+| CH10 || DL16 - AES50B - 10 | Yellow |
+| CH11 || DL16 - AES50B - 11 | Yellow |
+| CH12 || DL16 - AES50B - 12 | Yellow |
+| CH13 || DL16 - AES50B - 13 | Yellow |
+| CH14 || DL16 - AES50B - 14 | Yellow |
+| CH15 || DL16 - AES50B - 15 | Yellow |
+| CH16 || DL16 - AES50B - 16 | Yellow |
+| CH17 || DL32 - AES50A - 17 | Yellow |
+| CH18 || DL32 - AES50A - 18 | Yellow |
+| CH19 || DL32 - AES50A - 19 | Yellow |
+| CH20 || DL32 - AES50A - 20 | Yellow |
+| CH21 || DL32 - AES50A - 21 | Yellow |
+| CH22 || DL32 - AES50A - 22 | Yellow |
+| CH23 || DL32 - AES50A - 23 | Yellow |
+| CH24 || DL32 - AES50A - 24 | Yellow |
+| CH25 || DL32 - AES50A - 25 | Yellow |
+| CH26 || DL32 - AES50A - 26 | Yellow |
+| CH27 || DL32 - AES50A - 27 | Yellow |
+| CH28 || DL32 - AES50A - 28 | Yellow |
+| CH29 || DL32 - AES50A - 29 | Yellow |
+| CH30 || DL32 - AES50A - 30 | Yellow |
+| CH31 || DL32 - AES50A - 31 | Yellow |
+| CH32 || DL32 - AES50A - 32 | Yellow |
 | Aux1 || Card 1 | Green |
 | Aux2 || Card 2 | Green |
 | Aux3 || Card 3 | Green |
