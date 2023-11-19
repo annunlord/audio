@@ -161,12 +161,12 @@ If the meeting rooms are part of the worship space, then we will need to send zo
 | CH30 || DL32 - AES50A - 30 | Yellow |
 | CH31 || DL32 - AES50A - 31 | Yellow |
 | CH32 || DL32 - AES50A - 32 | Yellow |
-| Aux1 || Card 1 | Green |
-| Aux2 || Card 2 | Green |
-| Aux3 || Card 3 | Green |
-| Aux4 || Card 4 | Green |
-| Aux5 || Aux 5 | Green |
-| Aux6 || Aux 6 | Green |
+| Aux1 || DL32 - AES50A - 1 | Green |
+| Aux2 || DL32 - AES50A - 2 | Green |
+| Aux3 || DL32 - AES50A - 3 | Green |
+| Aux4 || DL32 - AES50A - 4 | Green |
+| Aux5 || DL32 - AES50A - 5 | Green |
+| Aux6 || DL32 - AES50A - 6 | Green |
 | Aux7 || USB L | Yellow |
 | Aux8 || USB R | Yellow |
 | FX1L | FX | FX Return 1L | Magenta |
