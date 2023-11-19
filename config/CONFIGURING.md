@@ -129,10 +129,10 @@ If the meeting rooms are part of the worship space, then we will need to send zo
 
 | Channel | Name | Source | Color |
 | ------: | ---: | -----: | ----: |
-| CH01 | Choir L | DL16 - AES50B - 01 | White |
-| CH02 | Choir R | DL16 - AES50B - 02 | White |
-| CH03 || DL16 - AES50B - 03 | Yellow |
-| CH04 || DL16 - AES50B - 04 | Yellow |
+| CH01 | SR POD | DL16 - AES50B - 01 | White |
+| CH02 | Chair | DL16 - AES50B - 02 | White |
+| CH03 | Altar | DL16 - AES50B - 03 | White |
+| CH04 | SL POD | DL16 - AES50B - 04 | White |
 | CH05 || DL16 - AES50B - 05 | Yellow |
 | CH06 || DL16 - AES50B - 06 | Yellow |
 | CH07 || DL16 - AES50B - 07 | Yellow |
@@ -143,8 +143,8 @@ If the meeting rooms are part of the worship space, then we will need to send zo
 | CH12 || DL16 - AES50B - 12 | Yellow |
 | CH13 || DL16 - AES50B - 13 | Yellow |
 | CH14 || DL16 - AES50B - 14 | Yellow |
-| CH15 || DL16 - AES50B - 15 | Yellow |
-| CH16 || DL16 - AES50B - 16 | Yellow |
+| CH15 | Choir L | DL16 - AES50B - 15 | White |
+| CH16 | Choir R | DL16 - AES50B - 16 | White |
 | CH17 || DL32 - AES50A - 17 | Yellow |
 | CH18 || DL32 - AES50A - 18 | Yellow |
 | CH19 || DL32 - AES50A - 19 | Yellow |
