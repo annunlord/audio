@@ -1,5 +1,5 @@
-#4.0# console.bak     2023-11-28_21h40 M32C 4.09 M32C-09-6D-3D                                                                 
--prefs "ablesque" 80 50 100 50 ON 48K INT ON ON ON ON OFF OFF OFF %0000 OFF SCENES 24h OFF OFF NORM "M32C-09-6D-3D" USB 0 ""
+#4.0# console.bak     2023-12-02_09h21 M32C 4.09 M32C-09-6D-3D                                                                 
+-prefs "ablesque" 80 50 100 50 ON 48K INT ON ON ON ON OFF OFF OFF %0001 OFF SCENES 24h OFF OFF NORM "M32C-09-6D-3D" USB 0 ""
 -prefs/ip OFF
 -prefs/ip/addr 169 254 109 61
 -prefs/ip/mask 255 255 0 0
@@ -140,7 +140,7 @@
 /config/userctrl/C/enc "-" "-" "-" "-"
 /config/userctrl/C/btn "-" "-" "-" "-" "-" "-" "-" "-"
 /config/tape 0.0 0.0 ON
-/config/amixenable ON ON
+/config/amixenable ON OFF
 /config/dp48 %0000 0 AESA
 /config/dp48/assign 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 /config/dp48/link 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1
@@ -155,9 +155,9 @@
 /ch/01/insert OFF POST OFF
 /ch/01/eq ON
 /ch/01/eq/1 PEQ 124.7 +0.00 2.0
-/ch/01/eq/2 PEQ 496.6 +0.00 2.0
-/ch/01/eq/3 PEQ 1k97 +0.00 2.0
-/ch/01/eq/4 HShv 10k02 +0.00 2.0
+/ch/01/eq/2 PEQ 677.7 -2.75 2.5
+/ch/01/eq/3 PEQ 3k09 -0.75 2.0
+/ch/01/eq/4 HShv 3k55 -1.00 2.3
 /ch/01/mix ON  +5.0 OFF +0 OFF   -oo
 /ch/01/mix/01 OFF   -oo +0 GRP 0
 /ch/01/mix/02 OFF   -oo
@@ -187,8 +187,8 @@
 /ch/02/insert OFF POST OFF
 /ch/02/eq ON
 /ch/02/eq/1 PEQ 129.1 -8.75 2.4
-/ch/02/eq/2 PEQ 496.6 +0.00 2.0
-/ch/02/eq/3 PEQ 1k97 +0.00 2.0
+/ch/02/eq/2 PEQ 1k02 -1.00 1.4
+/ch/02/eq/3 PEQ 3k31 -1.75 2.0
 /ch/02/eq/4 HShv 10k02 +0.00 2.0
 /ch/02/mix ON  +5.0 OFF +0 OFF   -oo
 /ch/02/mix/01 OFF   -oo +0 GRP 0
@@ -214,15 +214,15 @@
 /ch/03/preamp +0.0 OFF ON 24  82
 /ch/03/gate OFF GATE -80.0 60.0 10 50.2  258 0
 /ch/03/gate/filter OFF 3.0 990.9
-/ch/03/dyn ON COMP PEAK LOG 0.0 3.0 1 5.50 10 10.0  151 POST 0 100 OFF
+/ch/03/dyn ON COMP PEAK LOG -26.5 100 1 5.00 1 10.0  151 POST 0 100 OFF
 /ch/03/dyn/filter OFF 3.0 990.9
 /ch/03/insert OFF POST OFF
 /ch/03/eq ON
-/ch/03/eq/1 PEQ 363.9 -11.7 9.1
-/ch/03/eq/2 PEQ 550.8 -12.5 6.4
-/ch/03/eq/3 PEQ 1k78 -15.0 1.9
-/ch/03/eq/4 VEQ 4k68 -9.00 8.2
-/ch/03/mix ON  +3.0 OFF +0 OFF   -oo
+/ch/03/eq/1 PEQ 306.2 -12.2 5.3
+/ch/03/eq/2 PEQ 590.2 -8.25 7.4
+/ch/03/eq/3 PEQ 990.9 -12.2  10
+/ch/03/eq/4 HShv 10k02 +0.00 2.0
+/ch/03/mix ON  +3.1 OFF +0 OFF   -oo
 /ch/03/mix/01 OFF   -oo +0 GRP 0
 /ch/03/mix/02 OFF   -oo
 /ch/03/mix/03 ON   -oo +0 GRP 0
@@ -252,8 +252,8 @@
 /ch/04/eq ON
 /ch/04/eq/1 PEQ 124.7 +0.00 2.0
 /ch/04/eq/2 PEQ 232.3 -10.7 2.9
-/ch/04/eq/3 PEQ 1k97 +0.00 2.0
-/ch/04/eq/4 HShv 10k02 +0.00 2.0
+/ch/04/eq/3 PEQ 3k43 -2.00 2.1
+/ch/04/eq/4 HShv 3k55 -1.00 2.3
 /ch/04/mix ON  +5.0 OFF +0 OFF   -oo
 /ch/04/mix/01 OFF   -oo +0 GRP 0
 /ch/04/mix/02 OFF   -oo
@@ -2022,7 +2022,7 @@
 /fx/7 GEQ2
 /fx/7/par 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
 /fx/8 GEQ
-/fx/8/par -15.0 -15.0 -15.0 -15.0 -13.0 -9.0 -10.0 -12.0 -3.0 -5.0 -4.0 -9.0 -3.0 -5.0 -2.0 -1.0 -2.5 -3.0 -4.5 -4.0 -1.5 -0.5 -0.5 -0.5 0.0 0.0 -0.5 0.0 -0.5 0.0 -0.5 0.0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+/fx/8/par -15.0 -15.0 -15.0 -15.0 -13.0 -9.0 -10.0 -12.0 -3.0 -5.0 -4.0 -9.0 -3.0 -5.0 -2.0 -1.0 -2.5 -3.0 -8.5 -5.5 -1.5 -0.5 -0.5 -0.5 0.0 0.0 -0.5 0.0 -0.5 0.0 -0.5 0.0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 /outputs/main/01 20 POST OFF
 /outputs/main/01/delay OFF   0.3
 /outputs/main/02 21 POST OFF
@@ -2179,7 +2179,7 @@
 /headamp/079 +0.0 OFF
 /headamp/080 +35.0 ON
 /headamp/081 +35.0 ON
-/headamp/082 +30.5 ON
+/headamp/082 +36.0 ON
 /headamp/083 +35.0 ON
 /headamp/084 +0.0 OFF
 /headamp/085 +0.0 OFF
