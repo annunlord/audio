@@ -84,7 +84,7 @@ This may need to change as we want to send different outputs to different stage 
 
 # Channel Utilization
 
-- Channels 1-16 are fed from behind the Scristy.
+- Channels 1-16 are fed from behind the Sacristy.
 - Channels 17-24 and aux 1-16 are fed from the equipment room.
 
 There are 7 Zones that we need separate mixes for.
