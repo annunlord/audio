@@ -36,16 +36,14 @@ jobs:
       - name: Generate PDF
         run: |
           cd config
-          echo 'module.exports = { launch_options: { args: ["--no-sandbox", "--disable-setuid-sandbox"] } };' > .md-to-pdf.js
-          
-          # Convert the diagram-rendered markdown into a PDF
-          md-to-pdf CONFIGURING_with_diagrams.md
+          echo "module.exports = { launch_options: { args: ['--no-sandbox', '--disable-setuid-sandbox'] } };" > pdf-config.js          
+          md-to-pdf --config-file pdf-config.js CONFIGURING_with_diagrams.md
 
       - name: Clean up temporary files & Rename
         run: |
           cd config
           mv CONFIGURING_with_diagrams.pdf CONFIGURING.pdf
-          rm CONFIGURING_with_diagrams.md puppeteer-config.json .md-to-pdf.js
+          rm CONFIGURING_with_diagrams.md puppeteer-config.json pdf-config.js
 
       - name: Upload PDF Artifact
         uses: actions/upload-artifact@v4
