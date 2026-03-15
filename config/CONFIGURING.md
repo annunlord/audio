@@ -13,7 +13,7 @@ If there is no sound in the church after a power outage, follow these three step
 
 ## Step 1: Reactivate the Local Mixer (Choir/Piano Area)
 
-Go to the FSR ML-116 wallplate located near the choir/piano.
+Go to the FSR wallplate located near the choir/piano.
 
 1. Press the **Mixer Control ON** button (the button with the microphone icon). Ensure the LED indicator lights up.
 2. Press the **LOCAL MIXER ON/OFF** button. This tells the system to accept the audio feed from the microphones.
