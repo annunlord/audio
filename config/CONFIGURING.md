@@ -127,6 +127,119 @@ Because we have multiple microphones and zones, signal flow is managed via Subgr
 - **Choir (Stereo):** Ch 15 & 16 are routed to **Bus 01 & 02**, hard-panned left and right, completely bypassing the spoken-word AutoMixer. 
 - **Zone Feeds:** The Main LR feeds the Matrixes. When the DL32 is installed, this will allow independent EQ and delay for the overflow zones. 
 
+# Signal Processing & Feedback Management
+
+To ensure maximum speech intelligibility and gain-before-feedback, the system relies on a specific sequence of channel parametric EQs (PEQ), dynamic limiters, the AutoMixer, and master insert Graphic EQs (GEQ).
+
+## 1. Channel Processing (Input Stage)
+Before any audio reaches a mix bus, it undergoes heavy shaping at the channel level.
+
+* **Low-Frequency Roll-off (HPF):** All spoken word channels (Pods, Altar, Lavs) and Choir mics have a High-Pass Filter engaged at roughly **124 Hz**. This removes HVAC rumble, handling noise, and proximity boominess.
+* **Feedback & Resonance Cuts (PEQ):** The individual channel EQs are aggressively notched to remove room resonance. For example, the Altar mic (Ch 3) has deep cuts of **-12.2 dB at 306 Hz** and **-12.2 dB at 990 Hz**.
+* **Brickwall Peak Limiting:** All spoken-word and choir channels have their compressor set as a hard peak limiter (**100:1 ratio**). This prevents sudden loud transients (like someone tapping the mic or shouting) from clipping the system.
+
+## 2. The AutoMixer (Gain Sharing)
+* **Group X:** Channels 1 through 6 (Pods, Altar, and Lavs) are assigned to the AutoMixer (Group X). 
+* **Function:** The AutoMixer automatically turns down inactive microphones while keeping the active speaker present. This prevents the combined background noise and phase-cancellation of 6 open microphones from causing a feedback loop.
+* **Choir Isolation:** The Choir microphones (Ch 15 & 16) bypass the AutoMixer entirely so continuous singing does not artificially mute the spoken-word microphones.
+
+## 3. Master Inserts & Final Output Processing
+Once the audio leaves the mix buses and hits the master outputs, it runs through dedicated hardware-emulated Graphic EQs and Master Compressors.
+
+* **Main L/R (Church Mix) Feedback Rejection:** * The Main L/R bus uses **FX8 (Dual GEQ)** as a **POST-Fader Insert**. 
+    * This GEQ has massive cuts dialed in (up to **-15 dB**) specifically targeting low/low-mid room build-up. This acts as the final line of defense against room feedback for the worship space.
+* **Matrix Zones (Meeting Rooms):**
+    * Matrixes 1 through 4 (Gathering Space, MR A, B, and C) use **FX6 and FX7 (Dual GEQs)** as **PRE-Fader Inserts**. This allows independent ringing-out of the overflow rooms.
+* **Mono/Center (FSR feed & Hard-of-Hearing):**
+    * Instead of an EQ insert, the Mono bus uses extremely heavy **RMS Compression** (Ratio 100:1, Threshold -35.0 dB). This heavily squashes the dynamic range so that whispers and loud speaking are output at the exact same volume to the FSR ML-800 and hearing assist systems.
+
+---
+
+### Signal Processing Flowchart
+
+*(To view this diagram, paste the code block below into a Mermaid viewer like Mermaid Live Editor or a compatible Markdown previewer).*
+
+```mermaid
+graph LR
+    %% Styling
+    classDef input fill:#2c3e50,stroke:#ecf0f1,stroke-width:2px,color:#ecf0f1;
+    classDef proc fill:#d35400,stroke:#ecf0f1,stroke-width:2px,color:#ecf0f1;
+    classDef mix fill:#27ae60,stroke:#ecf0f1,stroke-width:2px,color:#ecf0f1;
+    classDef insert fill:#8e44ad,stroke:#ecf0f1,stroke-width:2px,color:#ecf0f1;
+    classDef out fill:#c0392b,stroke:#ecf0f1,stroke-width:2px,color:#ecf0f1;
+
+    %% -------------------
+    %% Input Stage
+    %% -------------------
+    subgraph Input Stage
+        Mics["Spoken Word Mics\n(Ch 1-6)"]:::input
+        Choir["Choir Mics\n(Ch 15-16)"]:::input
+    end
+
+    %% -------------------
+    %% Channel Processing
+    %% -------------------
+    subgraph Channel Processing
+        MicEQ["Channel PEQ\n(HPF 124Hz + Feedback Notches)"]:::proc
+        MicComp["Dynamics\n(100:1 Peak Limiter)"]:::proc
+        ChoirEQ["Channel PEQ\n(HPF 124Hz)"]:::proc
+        ChoirComp["Dynamics\n(100:1 Peak Limiter)"]:::proc
+    end
+
+    Mics --> MicEQ --> MicComp
+    Choir --> ChoirEQ --> ChoirComp
+
+    %% -------------------
+    %% AutoMix & Busing
+    %% -------------------
+    subgraph AutoMix & Subgroups
+        AMix{"AutoMixer\n(Group X)"}:::proc
+        Bus3["Bus 03:\nChurch Mics"]:::mix
+        Bus1_2["Bus 01/02:\nChoir L/R"]:::mix
+    end
+
+    MicComp --> AMix --> Bus3
+    ChoirComp --> Bus1_2
+
+    %% -------------------
+    %% Master Buses
+    %% -------------------
+    subgraph Masters & Matrixes
+        MainLR["Main L/R Mix"]:::mix
+        MainMono["Mono/Center Mix"]:::mix
+        MtxZones["Matrix Zones 1-4\n(Gathering/Meeting)"]:::mix
+    end
+
+    Bus3 --> MainLR & MainMono
+    Bus1_2 --> MainLR
+    MainLR -. "Sends" .-> MtxZones
+
+    %% -------------------
+    %% Master Inserts & Dynamics
+    %% -------------------
+    subgraph Final Processing
+        MainGEQ["Main LR Insert\nFX8 GEQ (Post-Fader)\n*Heavy Feedback Cuts*"]:::insert
+        MonoDyn["Mono Dynamics\n*Heavy RMS Comp (100:1)*"]:::proc
+        MtxGEQ["Matrix Inserts\nFX6/FX7 GEQs (Pre-Fader)"]:::insert
+    end
+
+    MainLR --> MainGEQ
+    MainMono --> MonoDyn
+    MtxZones --> MtxGEQ
+
+    %% -------------------
+    %% Physical Output
+    %% -------------------
+    subgraph Physical Outputs
+        OutFSR["DL16 Out 5 -> FSR ML-800\n(Current State)"]:::out
+        OutQSC["DL32 Out 3/4 -> QSC Mains\n(Future)"]:::out
+        OutZones["DL32 Outs -> FSR/Amps\n(Future)"]:::out
+    end
+
+    MonoDyn --> OutFSR
+    MainGEQ -.-> OutQSC
+    MtxGEQ -.-> OutZones
+```
 # Appendix
 
 ## Appendix A: Channel Assignment
