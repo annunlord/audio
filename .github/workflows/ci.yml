@@ -21,7 +21,6 @@ jobs:
           node-version: '20'
 
       - name: Install PDF & Mermaid Tools
-        # md-to-pdf creates the PDF. @mermaid-js/mermaid-cli parses the diagrams.
         run: npm install -g md-to-pdf @mermaid-js/mermaid-cli
 
       - name: Render Mermaid Diagrams
@@ -30,15 +29,14 @@ jobs:
           # Puppeteer requires --no-sandbox to run inside GitHub Actions containers
           echo '{"args": ["--no-sandbox", "--disable-setuid-sandbox"]}' > puppeteer-config.json
           
-          # This reads CONFIGURING.md, generates the mermaid graphs as SVGs/PNGs, 
+          # This reads CONFIGURING.md, generates the mermaid graphs, 
           # and creates a new temporary MD file with the diagrams embedded as images.
           mmdc -i CONFIGURING.md -o CONFIGURING_with_diagrams.md -p puppeteer-config.json
 
       - name: Generate PDF
         run: |
           cd config
-          # Configure md-to-pdf to bypass the sandbox restriction
-          echo 'module.exports = { puppeteer_options: { args: ["--no-sandbox", "--disable-setuid-sandbox"] } };' > .md-to-pdf.js
+          echo 'module.exports = { launch_options: { args: ["--no-sandbox", "--disable-setuid-sandbox"] } };' > .md-to-pdf.js
           
           # Convert the diagram-rendered markdown into a PDF
           md-to-pdf CONFIGURING_with_diagrams.md
