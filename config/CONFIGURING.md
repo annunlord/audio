@@ -37,6 +37,49 @@ If steps 1 and 2 are complete and there is still no sound, verify the digital mi
 1. **Check the DL16 Stagebox:** Ensure it is powered on and the AES50 status light on the front is **GREEN**. If it is red or flashing, it has lost sync with the M32C.
 2. **Check the Network:** Ensure the UniFi mini switch in the rack is powered on and showing activity lights. The Mixing Station app on the iPad relies entirely on this switch to communicate with the M32C mixer.
 
+# System Adjustments & Overrides (Mixing Station Guide)
+
+The audio system is designed to be **"set and forget."** Under normal circumstances, the AutoMixer and FSR room combiner handle everything automatically, and you should not need to touch the digital console. 
+
+Opening the Mixing Station app on the iPad is only necessary if something has gone wrong, an unusual adjustment is needed for a specific speaker, or the system needs to be reset for a special event.
+
+## 1. Connecting to the Audio Network
+To control the console, your device must be on the correct network.
+* **Wireless (iPad/Tablet):** The device must be connected to the **IoT VLAN**. Contact the facilities manager for the current Wi-Fi password and access provisioning.
+* **Wired (Laptop/Mac):** Alternatively, you can plug a computer directly into the UniFi mini switch located in the Sacristy equipment rack using a standard Ethernet cable.
+
+## 2. Launching Mixing Station
+Once connected to the correct network:
+1. Open the **Mixing Station** app.
+2. Select the **X32/M32** console family.
+3. Tap **Connect**.
+4. If the console is not automatically discovered, enter the hostname: `m32-1.annunlord.com`.
+
+## 3. Restoring the Baseline System State
+If the audio routing has been altered for a special event or accidentally changed, you can restore the system to its normal state using one of two methods:
+
+### Method A: Via Mixing Station (Preferred)
+1. Tap the **Folder/Menu** icon in the top right corner of the app.
+2. Navigate to **Scenes**.
+3. Locate and select the baseline scene (e.g., `Annunlord2026-03-15`).
+4. Tap **Load** and confirm.
+
+### Method B: Via USB (Hardware Fallback)
+If the iPad is completely dead or the network is down, you can restore the entire console configuration directly from the M32C front panel.
+1. Download the latest `console.bak` file from the repository.
+2. Save it to the root directory of a FAT32-formatted USB flash drive.
+3. Plug the USB drive into the front port of the M32C in the Sacristy.
+4. Using the front panel knobs, navigate to **Setup -> Global**.
+5. Select **Import** and choose the `console.bak` file from the USB drive.
+
+## 4. Making Manual Adjustments
+Currently, we do not use custom UI layouts. The standard app interface provides everything needed to adjust the mix.
+
+* **The Main Fader Bank:** Swipe to the main fader bank layer in Mixing Station. This is your primary control surface.
+* **Individual Mics:** Use channels 1-6 to unmute or adjust the individual Podiums, Chair, Altar, and Lavaliers if a specific speaker is unusually quiet or loud.
+* **Church Mics (Bus 03):** This is your master subgroup for all spoken word. If the priest and readers are all universally too loud or too quiet, adjust this single fader rather than chasing individual microphone channels.
+* **Main LR:** This is the master volume for the entire worship space. Ensure it is unmuted and set near unity (0 dB).
+
 # Routing Topology
 
 We use AES50 stage boxes to collect inputs and distribute outputs. 
