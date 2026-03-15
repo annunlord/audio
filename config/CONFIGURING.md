@@ -75,7 +75,8 @@ If the iPad is completely dead or the network is down, you can restore the entir
 ## 4. Making Manual Adjustments
 Currently, we do not use custom UI layouts. The standard app interface provides everything needed to adjust the mix.
 
-* **The Main Fader Bank:** Swipe to the main fader bank layer in Mixing Station. This is your primary control surface.
+* **Choir Mix (Yamaha MG16):** Individual choir microphones and instruments are mixed on a physical **Yamaha MG16** mixer accessible to the musicians. Check this physical board first if the choir balance is off or missing.
+* **The Main Fader Bank:** Swipe to the main fader bank layer in Mixing Station. This is your primary digital control surface.
 * **Individual Mics:** Use channels 1-6 to unmute or adjust the individual Podiums, Chair, Altar, and Lavaliers if a specific speaker is unusually quiet or loud.
 * **Church Mics (Bus 03):** This is your master subgroup for all spoken word. If the priest and readers are all universally too loud or too quiet, adjust this single fader rather than chasing individual microphone channels.
 * **Main LR:** This is the master volume for the entire worship space. Ensure it is unmuted and set near unity (0 dB).
@@ -85,7 +86,7 @@ Currently, we do not use custom UI layouts. The standard app interface provides 
 We use AES50 stage boxes to collect inputs and distribute outputs. 
 
 - **Phase 1 (Current) - DL16 (AES50B):** Located in the Sacristy.
-  - Handles all current wireless and physical inputs (Ch 1-16).
+  - Handles all current wireless and physical inputs (Ch 1-16), including the stereo feed from the choir's Yamaha MG16 sub-mixer.
   - Output 7 provides the Mono/Center master mix to the Williams Sound PPA T35 transmitter for hearing assistance.
   - Output 8 provides the Mono/Center master mix to the FSR ML-800 via a single XLR run to the mechanical room. 
 - **Phase 2 (Future) - DL32 (AES50A):** To be installed in the Mechanical Room.
@@ -169,7 +170,7 @@ We also need a feed for the wireless broadcast for the hard-of-hearing (the Will
 Because we have multiple microphones and zones, signal flow is managed via Subgroups and the AutoMixer.
 
 - **Spoken Word (AutoMixer):** Ch 1-6 (Pods, Altar, Lavs) are assigned to the AutoMixer (Group X) to manage gain-before-feedback. They are routed to **Bus 03 (Church Mics)**, which then feeds the Main LR and Mono.
-- **Choir (Stereo):** Ch 15 & 16 are routed to **Bus 01 & 02**, hard-panned left and right, completely bypassing the spoken-word AutoMixer. 
+- **Choir (Yamaha MG16 Sub-Mix):** Ch 15 & 16 receive a pre-mixed stereo feed from a physical Yamaha MG16 accessible to the choir. They are routed to **Bus 01 & 02**, hard-panned left and right, completely bypassing the spoken-word AutoMixer. This empowers the choir to manage their own mix without risking the spoken word channels.
 - **Zone Feeds:** The Main LR feeds the Matrixes. When the DL32 is installed, this will allow independent EQ and delay for the overflow zones. 
 
 # Signal Processing & Feedback Management
@@ -186,7 +187,7 @@ Before any audio reaches a mix bus, it undergoes heavy shaping at the channel le
 ## 2. The AutoMixer (Gain Sharing)
 * **Group X:** Channels 1 through 6 (Pods, Altar, and Lavs) are assigned to the AutoMixer (Group X). 
 * **Function:** The AutoMixer automatically turns down inactive microphones while keeping the active speaker present. This prevents the combined background noise and phase-cancellation of 6 open microphones from causing a feedback loop.
-* **Choir Isolation:** The Choir microphones (Ch 15 & 16) bypass the AutoMixer entirely so continuous singing does not artificially mute the spoken-word microphones.
+* **Choir Isolation:** The Choir stereo feed bypasses the AutoMixer entirely so continuous singing or instrumentation does not artificially mute the spoken-word microphones.
 
 ## 3. Master Inserts & Final Output Processing
 Once the audio leaves the mix buses and hits the master outputs, it runs through dedicated hardware-emulated Graphic EQs and Master Compressors.
@@ -218,8 +219,11 @@ graph LR
     %% -------------------
     subgraph Input Stage
         Mics["Spoken Word Mics\n(Ch 1-6)"]:::input
-        Choir["Choir Mics\n(Ch 15-16)"]:::input
+        Yama["Yamaha MG16\n(Choir Sub-Mixer)"]:::input
+        Choir["Choir L/R Inputs\n(Ch 15-16)"]:::input
     end
+    
+    Yama --> Choir
 
     %% -------------------
     %% Channel Processing
