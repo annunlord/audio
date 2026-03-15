@@ -1,27 +1,28 @@
 # Configuring the M32C
 
-This document *every* step taken to configure the M32C for use in the Church.
+This document outlines *every* step taken to configure the M32C for use in the Church.
 
-# Routing
+**Note on Current vs. Future System State:**
+We are currently in a transitional phase. The console is internally programmed to handle discrete stereo and matrix zone outputs for a future Midas DL32 stagebox installation. However, currently, the physical room combining and amplification is handled by an FSR ML-800 in the mechanical room, which receives a single Mono feed from the Sacristy DL16. 
 
-We are using two AES50 stage boxes to collect inputs from behind the sacristy as well as in the equipment room.
+# Routing Topology
 
-The final routing will give us
+We use AES50 stage boxes to collect inputs and distribute outputs. 
 
-- DL16 (AES50B): Behind the Sacristy
-    - Inputs 1-16 map to `User Input` 1-16
-    - Ouputs 1-8 map to `User Output` 17-24
-- DL32 (AES50A): In the Equipment Room
-    - Inputs 1-6 map to `Aux Input` 1-6
-    - Inputs 17-32 map to `User Input` 17-32
-    - Outputs 1-16 map to `User Output` 1-16
+- **Phase 1 (Current) - DL16 (AES50B):** Located in the Sacristy.
+  - Handles all current wireless and physical inputs (Ch 1-16).
+  - Output 5 provides the Mono/Center master mix to the FSR ML-800 via a single XLR run to the mechanical room. 
+- **Phase 2 (Future) - DL32 (AES50A):** To be installed in the Mechanical Room.
+  - Inputs 1-6 map to `Aux Input` 1-6.
+  - Inputs 17-32 map to `User Input` 17-32.
+  - Outputs 1-16 map to `User Output` 1-16 to provide true discrete stereo and zone matrix feeds to the Crown CDi1000 amps and QSC K12.2 choir speakers.
 
 ## Input Blocks
 
 - Under `Routing->Input Blocks` map all `InGrp` to the appropriate `User In` block.
-- Under `Routing->Input Blocks` map `Aux Ins` to  `AES50A 1-6`.
+- Under `Routing->Input Blocks` map `Aux Ins` to `AES50A 1-6`.
 
-This will allow us to have channel-by-channel control under the User Routing section rather than only being able to assign channels in 8 channel blocks.
+This allows us to have channel-by-channel control under the User Routing section rather than only being able to assign channels in strict 8-channel blocks.
 
 ![Input Block Routing](images/input-block-routing.png)
 
@@ -29,65 +30,50 @@ This will allow us to have channel-by-channel control under the User Routing sec
 
 ## Output Blocks
 
-The following assigns `User Out 1-25` to the appropriate outputs on our Stage Boxes
+The following assigns `User Out 1-24` to the appropriate outputs on our Stage Boxes.
 
 - Under `Routing->Output Routing` Map:
     - `AES50A`- `Out 1-8` to `User Out 1-8`
     - `AES50A`- `Out 9-16` to `User Out 9-16`
-    - `AES50B`- `Out 1-8` to `User Out 17-25`
+    - `AES50B`- `Out 1-8` to `User Out 17-24`
 
-### AES50A Output Blocks
-
+### AES50A Output Blocks (Future DL32)
 ![AES50A Output Routing](images/aes50-a-output-block-routing.png)
 
-### AES50B Output Blocks
+### AES50B Output Blocks (Current DL16)
 ![AES50B Output Routing](images/aes50-b-output-block-routing.png)
 
 ## User Routing
 
-The previous two sections result in mapping the channel inputs to use the `User Inputs` and the AES50 snakes being fed by the `User Outputs`. 
-Now, in the user routing, we control exactly which channels are mapped to each `User Input` and `User Output`
-
 ### User Input Routing
 
 Make the appropriate mapping of AES50 connections to the user ins.
+- `AES50B 1-16` to `In 1-16` (Sacristy DL16)
+- `AES50A 17-32` to `In 17-32` (Mechanical Room DL32)
 
-- `AES50B 1-16` to `In 1-16`
-- `AES50A 17-32` to `In 17-32`
-
-These mappings route the AES signals to the User inputs. This allows us to quickly do alternative routings for special events. (Individual channel mappings)
-
-#### AES50B Inputs
-
-![AES50B Feed User In 1-16](images/aes50-b-input-routing.png)
-
-#### AES50A Inputs
-
-![AES50A Feed User In 17-32](images/aes50-a-input-routing.png)
+These mappings route the AES signals to the User inputs, allowing us to quickly do alternative routings for special events without changing the physical patch.
 
 ### User Output Routing
 
-We are using this area to patch the console "outputs" to the physical outputs.
-For the time being, I have the following setup:
+We use this area to patch the console "outputs" to the physical outputs on the stage boxes. 
 
-- `User Output 1-10` from `Out 1-10`
-- `User Output 11-16` from `Aux 1-6`
-- `User Output 17-24` from `Out 9-16`
-
-This may need to change as we want to send different outputs to different stage boxes.
-
-![Output to User Output-1](images/user-output-routing-1.PNG)
-
-![Output to User Output-2](images/user-output-routing-2.PNG)
-
-![Output to User Output-3](images/user-output-routing-3.PNG)
+*Currently programmed routing based on M32 Output block 1-16:*
+- `User Output 1` from `Mtx 5` (Outdoors)
+- `User Output 2` from `Mtx 6` (Cafeteria)
+- `User Output 3-4` from `Main L/R`
+- `User Output 5` from `Mono/Center` **(Current feed to FSR ML-800)**
+- `User Output 7` from `Bus 2` (Choir R)
+- `User Output 8 & 16` from `Bus 3` (Church Mics)
+- `User Output 9 & 15` from `Bus 4` (Church Mains)
+- `User Output 10-13` from `Bus 1` (Choir L)
+- `User Output 14` from `Bus 8` (Meeting Room A)
 
 # Channel Utilization
 
-- Channels 1-16 are fed from behind the Sacristy.
-- Channels 17-24 and aux 1-16 are fed from the equipment room.
+- Channels 1-16 are fed from the Sacristy (DL16).
+- Channels 17-32 and Aux 1-6 are reserved for the Mechanical Room (DL32).
 
-There are 7 Zones that we need separate mixes for.
+There are 7 Zones configured in the console logic:
 
 | Zone | Location | Output Source |
 | ---: | -------: | ------------: |
@@ -101,27 +87,13 @@ There are 7 Zones that we need separate mixes for.
 
 We also need a feed for the wireless broadcast for the hard-of-hearing. We will use **MONO** for this.
 
-![Output Naming](images/output-naming.PNG)
+# Internal Routing & AutoMixing
 
-# Internal Routing
+Because we have multiple microphones and zones, signal flow is managed via Subgroups and the AutoMixer.
 
-Because we have 8 potentially independent mixes within this console, we have to be creative.
-
-The signal flow chain goes as follows:
-
-Zone inputs come in on independent channels. All channels that are inputs of a specific zone get sent to a subgroup/mixbus. That mixbus can then be directed to any of the matrices/mainlr/mono sends. This is how we will combine the rooms.
-
-For example,
-
-If channel 1 is the podium mic input, I will route it to the mix bus for zone 1.
-
-If the meeting rooms are part of the worship space, then we will need to send zone1's inputs to the meeting rooms. This would mean sending the zone1 mixbus to the matrices of room A, room B, and room C.
-
-## Internal Setup
-
-- Disable all channels send to LR
-- Setup each mix bus as a subgroup tap
-- Select each channel as part of the subgroup
+- **Spoken Word (AutoMixer):** Ch 1-6 (Pods, Altar, Lavs) are assigned to the AutoMixer (Group X) to manage gain-before-feedback. They are routed to **Bus 03 (Church Mics)**, which then feeds the Main LR and Mono.
+- **Choir (Stereo):** Ch 15 & 16 are routed to **Bus 01 & 02**, hard-panned left and right, completely bypassing the spoken-word AutoMixer. 
+- **Zone Feeds:** The Main LR feeds the Matrixes. When the DL32 is installed, this will allow independent EQ and delay for the overflow zones. 
 
 # Appendix
 
@@ -133,8 +105,8 @@ If the meeting rooms are part of the worship space, then we will need to send zo
 | CH02 | Chair | DL16 - AES50B - 02 | White |
 | CH03 | Altar | DL16 - AES50B - 03 | White |
 | CH04 | SL POD | DL16 - AES50B - 04 | White |
-| CH05 || DL16 - AES50B - 05 | Yellow |
-| CH06 || DL16 - AES50B - 06 | Yellow |
+| CH05 | LAV1 | DL16 - AES50B - 05 | Yellow |
+| CH06 | LAV2 | DL16 - AES50B - 06 | Yellow |
 | CH07 || DL16 - AES50B - 07 | Yellow |
 | CH08 || DL16 - AES50B - 08 | Yellow |
 | CH09 || DL16 - AES50B - 09 | Yellow |
@@ -145,95 +117,59 @@ If the meeting rooms are part of the worship space, then we will need to send zo
 | CH14 || DL16 - AES50B - 14 | Yellow |
 | CH15 | Choir L | DL16 - AES50B - 15 | White |
 | CH16 | Choir R | DL16 - AES50B - 16 | White |
-| CH17 || DL32 - AES50A - 17 | Yellow |
-| CH18 || DL32 - AES50A - 18 | Yellow |
-| CH19 || DL32 - AES50A - 19 | Yellow |
-| CH20 || DL32 - AES50A - 20 | Yellow |
-| CH21 || DL32 - AES50A - 21 | Yellow |
-| CH22 || DL32 - AES50A - 22 | Yellow |
-| CH23 || DL32 - AES50A - 23 | Yellow |
-| CH24 || DL32 - AES50A - 24 | Yellow |
-| CH25 || DL32 - AES50A - 25 | Yellow |
-| CH26 || DL32 - AES50A - 26 | Yellow |
-| CH27 || DL32 - AES50A - 27 | Yellow |
-| CH28 || DL32 - AES50A - 28 | Yellow |
-| CH29 || DL32 - AES50A - 29 | Yellow |
-| CH30 || DL32 - AES50A - 30 | Yellow |
-| CH31 || DL32 - AES50A - 31 | Yellow |
-| CH32 || DL32 - AES50A - 32 | Yellow |
-| Aux1 || DL32 - AES50A - 1 | Green |
-| Aux2 || DL32 - AES50A - 2 | Green |
-| Aux3 || DL32 - AES50A - 3 | Green |
-| Aux4 || DL32 - AES50A - 4 | Green |
-| Aux5 || DL32 - AES50A - 5 | Green |
-| Aux6 || DL32 - AES50A - 6 | Green |
-| Aux7 || USB L | Yellow |
-| Aux8 || USB R | Yellow |
-| FX1L | FX | FX Return 1L | Magenta |
-| FX1R | FX | FX Return 1R | Magenta |
-| FX2L | FX | FX Return 2L | Magenta |
-| FX2R | FX | FX Return 2R | Magenta |
-| FX3L | FX | FX Return 3L | Magenta |
-| FX3R | FX | FX Return 3R | Magenta |
-| FX4L | FX | FX Return 4L | Magenta |
-| FX4R | FX | FX Return 4R | Magenta |
+| CH17-32 | (Future Use) | DL32 - AES50A - 17-32 | Yellow |
+| Aux1-6 | (Future Use) | DL32 - AES50A - 1-6 | Green |
+| Aux7 | USB L | USB Return L | Yellow |
+| Aux8 | USB R | USB Return R | Yellow |
+| FX1 L/R | Vintage Room | FX Return 1 | Magenta |
+| FX2 L/R | Hall Reverb | FX Return 2 | Magenta |
+| FX3 L/R | Stereo Delay | FX Return 3 | Magenta |
+| FX4 L/R | Stereo Chorus | FX Return 4 | Magenta |
 
-| Channel | Name | Source | Color |
-| ------: | ---: | -----: | ----: |
-| Bus01 | Choir L || White |
-| Bus02 | Choir R || White |
-| Bus03 | Church Mics || White |
-| Bus04 | MixBus 4 || Black |
-| Bus05 | MixBus 5 || Black |
-| Bus06 | MixBus 6 || Black |
-| Bus07 | Gathering Sp || Magenta |
-| Bus08 | MR A || Yellow |
-| Bus09 | MR B || Cyan |
-| Bus10 | MR C || Green |
-| Bus11 | Outdoors || Red |
-| Bus12 | Cafeteria || Blue |
-| Bus13 | FX 1 || Magenta |
-| Bus14 | FX 2 || Magenta |
-| Bus15 | FX 3 || Magenta |
-| Bus16 | FX 4 || Magenta |
+## Appendix B: Bus & Matrix Assignments
+
+| Channel | Name | Destination / Function | Color |
+| ------: | ---: | ----------: | ----: |
+| Bus01 | Choir L | Main L | White |
+| Bus02 | Choir R | Main R | White |
+| Bus03 | Church Mics | Main LR + Mono | White |
+| Bus04 | Church Mains | Main LR | Black |
+| Bus08 | MR A | Matrix 2 Feed | Yellow |
+| Bus11 | Outdoors | Matrix 5 Feed | Red |
+| Bus12 | Cafeteria | Matrix 6 Feed | Blue |
+| Bus13 | FX 1 Send | Vintage Room | Magenta |
+| Bus14 | FX 2 Send | Hall Reverb | Magenta |
+| Bus15 | FX 3 Send | Stereo Delay | Magenta |
+| Bus16 | FX 4 Send | Stereo Chorus | Magenta |
 
 | Channel | Name | Destination | Color |
 | ------: | ---: | ----------: | ----: |
-| LR | Church out || White Inv |
-| Mono | Headphones || White Inv |
-| Mtx1 | Gathering Space Out || Magenta Inv |
-| Mtx2 | MR A Out || Yellow Inv |
-| Mtx3 | MR B Out || Cyan Inv |
-| Mtx4 | MR C Out || Green Inv |
-| Mtx5 | Outside Out || Red Inv |
-| Mtx6 | Cafeteria Out || Blue Inv |
+| LR | Main Church | Phase 2 DL32 Out 3/4 | White Inv |
+| Mono | FSR ML-800 / HOH | Phase 1 DL16 Out 5 | White Inv |
+| Mtx1 | Gathering Space | - | Magenta Inv |
+| Mtx2 | MR A | - | Yellow Inv |
+| Mtx3 | MR B | - | Cyan Inv |
+| Mtx4 | MR C | - | Green Inv |
+| Mtx5 | Outside Out | Phase 2 DL32 Out 1 | Red Inv |
+| Mtx6 | Cafeteria Out | Phase 2 DL32 Out 2 | Blue Inv |
 
-| Channel | Name | Source | Color |
-| ------: | ---: | -----: | ----: |
-| DCA1 | DCA 1 || White |
-| DCA2 | DCA 2 || White |
-| DCA3 | DCA 3 || White |
-| DCA4 | DCA 4 || White |
-| DCA5 | DCA 5 || White |
-| DCA6 | DCA 6 || White |
-| DCA7 | DCA 7 || White |
-| DCA8 | DCA 8 || White |
+## Appendix C: Output Patching (User Outs 1-16)
 
-| User Output | Source | Tap |
-| ----------: | -----: | --: |
-| 1 | Mtx 1 | Post Fadar |
-| 2 | Mtx 2 | Post Fadar |
-| 3 | Mtx 3 | Post Fadar |
-| 4 | Mtx 4 | Post Fadar |
-| 5 | Mtx 5 | Post Fadar |
-| 6 | Mtx 6 | Post Fadar |
-| 7 | Main L | Post Fadar |
-| 8 | Main R | Post Fadar |
-| 9 | Main M/C | Post Fadar |
-| 10 |||
-| 11 |||
-| 12 |||
-| 13 |||
-| 14 |||
-| 15 |||
-| 16 |||
+| User Output | Console Source | Physical Destination |
+| ----------: | -----: | :-- |
+| 1 | Mtx 5 | Outdoors (Future DL32) |
+| 2 | Mtx 6 | Cafeteria (Future DL32) |
+| 3 | Main L | Church Mains L |
+| 4 | Main R | Church Mains R |
+| 5 | Mono/Center | **FSR ML-800 Room Combiner Input** |
+| 6 | - | - |
+| 7 | Bus 2 | Choir R Direct |
+| 8 | Bus 3 | Church Mics Direct |
+| 9 | Bus 4 | Church Mains Direct |
+| 10 | Bus 1 | Choir L Direct |
+| 11 | Bus 1 | Choir L Direct |
+| 12 | Bus 1 | Choir L Direct |
+| 13 | Bus 1 | Choir L Direct |
+| 14 | Bus 8 | Meeting Room A Direct |
+| 15 | Bus 4 | Church Mains Direct |
+| 16 | Bus 3 | Church Mics Direct |
