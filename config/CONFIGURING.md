@@ -5,6 +5,38 @@ This document outlines *every* step taken to configure the M32C for use in the C
 **Note on Current vs. Future System State:**
 We are currently in a transitional phase. The console is internally programmed to handle discrete stereo and matrix zone outputs for a future Midas DL32 stagebox installation. However, currently, the physical room combining and amplification is handled by an FSR ML-800 in the mechanical room, which receives a single Mono feed from the Sacristy DL16. 
 
+# EMERGENCY START-UP: Power Outage Recovery
+
+When the building loses power, the FSR audio distribution system defaults to an "Off" and "Uncombined" state. Even if the M32 mixer is working perfectly, **no sound will reach the speakers until you manually reset the FSR panels.**
+
+If there is no sound in the church after a power outage, follow these three steps:
+
+## Step 1: Reactivate the Local Mixer (Choir/Piano Area)
+
+Go to the FSR ML-116 wallplate located near the choir/piano.
+
+1. Press the **Mixer Control ON** button (the button with the microphone icon). Ensure the LED indicator lights up.
+2. Press the **LOCAL MIXER ON/OFF** button. This tells the system to accept the audio feed from the microphones.
+
+![FSR ML-116 Wallplate](images/fsr-ml116.png)
+
+## Step 2: Recombine the Audio Zones (Sacristy)
+
+After a power cycle, the overflow rooms and hall will be isolated from the main church audio. Go to the Sacristy to link them back together.
+
+1. Locate the custom wall panel labeled **CHURCH & HALL ROOM COMBINER**.
+2. Press the necessary **Mix** buttons on the right side of the panel (e.g., **Mix 1-2**, **Mix 2-3**, **Mix 3-4**, etc.) to link the audio zones back together. 
+3. The LEDs next to the buttons will illuminate to confirm the rooms are actively sharing audio.
+
+![Sacristy Room Combiner](images/sacristy-combiner.jpg)
+
+## Step 3: Verify the Network & Mixer Core (Sacristy)
+
+If steps 1 and 2 are complete and there is still no sound, verify the digital mixer core is communicating:
+
+1. **Check the DL16 Stagebox:** Ensure it is powered on and the AES50 status light on the front is **GREEN**. If it is red or flashing, it has lost sync with the M32C.
+2. **Check the Network:** Ensure the UniFi mini switch in the rack is powered on and showing activity lights. The Mixing Station app on the iPad relies entirely on this switch to communicate with the M32C mixer.
+
 # Routing Topology
 
 We use AES50 stage boxes to collect inputs and distribute outputs. 
