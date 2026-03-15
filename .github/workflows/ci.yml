@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    #   - 'config/**' # Only run when files in the config folder change
+    paths:
+      - 'config/**' # Only run when files in the config folder change
   workflow_dispatch: # Adds a button to the Actions tab to trigger manually
 
 jobs:
@@ -54,9 +54,8 @@ jobs:
           
       # OPTIONAL: Uncomment the block below if you want the bot to automatically 
       # commit the PDF back to your repository instead of just attaching it as an artifact.
-      #
-      # - name: Commit PDF back to repository
-      #   uses: stefanzweifel/git-auto-commit-action@v5
-      #   with:
-      #     commit_message: "docs: Auto-generate CONFIGURING.pdf"
-      #     file_pattern: 'config/CONFIGURING.pdf'
+      - name: Commit PDF back to repository
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "docs: Auto-generate CONFIGURING.pdf"
+          file_pattern: 'config/CONFIGURING.pdf'
