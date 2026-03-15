@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'config/**' # Only run when files in the config folder change
+    # paths:
+    #   - 'config/**' # Only run when files in the config folder change
   workflow_dispatch: # Adds a button to the Actions tab to trigger manually
 
 jobs:
