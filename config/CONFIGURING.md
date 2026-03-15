@@ -86,7 +86,8 @@ We use AES50 stage boxes to collect inputs and distribute outputs.
 
 - **Phase 1 (Current) - DL16 (AES50B):** Located in the Sacristy.
   - Handles all current wireless and physical inputs (Ch 1-16).
-  - Output 5 provides the Mono/Center master mix to the FSR ML-800 via a single XLR run to the mechanical room. 
+  - Output 7 provides the Mono/Center master mix to the Williams Sound PPA T35 transmitter for hearing assistance.
+  - Output 8 provides the Mono/Center master mix to the FSR ML-800 via a single XLR run to the mechanical room. 
 - **Phase 2 (Future) - DL32 (AES50A):** To be installed in the Mechanical Room.
   - Inputs 1-6 map to `Aux Input` 1-6.
   - Inputs 17-32 map to `User Input` 17-32.
@@ -136,12 +137,13 @@ We use this area to patch the console "outputs" to the physical outputs on the s
 - `User Output 1` from `Mtx 5` (Outdoors)
 - `User Output 2` from `Mtx 6` (Cafeteria)
 - `User Output 3-4` from `Main L/R`
-- `User Output 5` from `Mono/Center` **(Current feed to FSR ML-800)**
-- `User Output 7` from `Bus 2` (Choir R)
-- `User Output 8 & 16` from `Bus 3` (Church Mics)
+- `User Output 5` from `Mono/Center`
+- `User Output 7` from `Mono/Center` **(Current feed to PPA T35 Transmitter)**
+- `User Output 8` from `Mono/Center` **(Current feed to FSR ML-800)**
 - `User Output 9 & 15` from `Bus 4` (Church Mains)
 - `User Output 10-13` from `Bus 1` (Choir L)
 - `User Output 14` from `Bus 8` (Meeting Room A)
+- `User Output 16` from `Bus 3` (Church Mics)
 
 # Channel Utilization
 
@@ -160,7 +162,7 @@ There are 7 Zones configured in the console logic:
 | Z6 | Outside | Mtx 5 |
 | Z7 | Lunchroom | Mtx 6 |
 
-We also need a feed for the wireless broadcast for the hard-of-hearing. We will use **MONO** for this.
+We also need a feed for the wireless broadcast for the hard-of-hearing (the Williams Sound PPA T35 transmitter). We use the heavily compressed **MONO** bus for this to ensure whispered prayers and loud singing are broadcast at a consistent volume.
 
 # Internal Routing & AutoMixing
 
@@ -193,8 +195,8 @@ Once the audio leaves the mix buses and hits the master outputs, it runs through
     * This GEQ has massive cuts dialed in (up to **-15 dB**) specifically targeting low/low-mid room build-up. This acts as the final line of defense against room feedback for the worship space.
 * **Matrix Zones (Meeting Rooms):**
     * Matrixes 1 through 4 (Gathering Space, MR A, B, and C) use **FX6 and FX7 (Dual GEQs)** as **PRE-Fader Inserts**. This allows independent ringing-out of the overflow rooms.
-* **Mono/Center (FSR feed & Hard-of-Hearing):**
-    * Instead of an EQ insert, the Mono bus uses extremely heavy **RMS Compression** (Ratio 100:1, Threshold -35.0 dB). This heavily squashes the dynamic range so that whispers and loud speaking are output at the exact same volume to the FSR ML-800 and hearing assist systems.
+* **Mono/Center (FSR feed & Hard-of-Hearing PPA T35):**
+    * Instead of an EQ insert, the Mono bus uses extremely heavy **RMS Compression** (Ratio 100:1, Threshold -35.0 dB). This heavily squashes the dynamic range so that whispers and loud speaking are output at the exact same volume to both the FSR ML-800 room combiner and the PPA T35 hearing assist system.
 
 ---
 
@@ -274,15 +276,17 @@ graph LR
     %% Physical Output
     %% -------------------
     subgraph Physical Outputs
-        OutFSR["DL16 Out 5 -> FSR ML-800\n(Current State)"]:::out
+        OutFSR["DL16 Out 8 -> FSR ML-800\n(Zone Combiner)"]:::out
+        OutPPA["DL16 Out 7 -> PPA T35\n(Hearing Assist)"]:::out
         OutQSC["DL32 Out 3/4 -> QSC Mains\n(Future)"]:::out
         OutZones["DL32 Outs -> FSR/Amps\n(Future)"]:::out
     end
 
-    MonoDyn --> OutFSR
+    MonoDyn --> OutFSR & OutPPA
     MainGEQ -.-> OutQSC
     MtxGEQ -.-> OutZones
 ```
+
 # Appendix
 
 ## Appendix A: Channel Assignment
